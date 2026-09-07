@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Lab Voice</title></head>
+<body>
+<button id="talk">Falar</button>
+<pre id="log"></pre>
+<script>
+const log=document.getElementById('log');
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const recognition=SR?new SR():null;
+if(recognition){recognition.lang='pt-BR';recognition.interimResults=false;}
+async function ask(message){
+  log.textContent+='\nVocê: '+message;
+  const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,history:[]})});
+  const data=await r.json();
+  log.textContent+='\nIA: '+data.answer+'\n';
+  const u=new SpeechSynthesisUtterance(data.answer);u.lang='pt-BR';speechSynthesis.speak(u);
+}
+document.getElementById('talk').onclick=()=>{if(!recognition){alert('SpeechRecognition não suportado neste navegador.');return;}recognition.start();};
+if(recognition)recognition.onresult=e=>ask(e.results[0][0].transcript);
+</script>
+</body></html>
