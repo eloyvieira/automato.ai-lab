@@ -21,10 +21,10 @@ Laboratório modular de IA para integrar LLMs, ferramentas, MCP, RAG, memória, 
                │                             │
                ▼                             ▼
     ┌─────────────────────┐       ┌─────────────────────┐
-    │    BASIC AI FLOW    │       │   AGENTIC AI FLOW  │
+    │    BASIC AI FLOW    │       │   AGENTIC AI FLOW   │
     │                     │       │                     │
-    │   AI Orchestrator   │       │     LangChain      │
-    │    Original Flow    │       │    + LangGraph     │
+    │   AI Orchestrator   │       │     LangChain       │
+    │    Original Flow    │       │    + LangGraph      │
     └──────────┬──────────┘       └──────────┬──────────┘
                │                             │
                └──────────────┬──────────────┘
